@@ -2,9 +2,43 @@ const display = document.getElementById('display')
 
 const maxLength = 10
 
+const keys = {
+    ENTER: 13,
+    BACK: 8,
+    DEL: 46
+}
+
+const operators = {
+    '+': '+',
+    '-': '-',
+    '*': '×',
+    '/': '÷'
+}
+
 let previousVal = ''
 let currentVal = ''
 let operator
+
+window.addEventListener('keypress', (e) => {
+    e.preventDefault()
+    const value = String.fromCharCode(e.keyCode)
+
+    if (!isNaN(value) || value === '.') {
+        showDigit(value)
+    } else if (Object.keys(operators).includes(value)) {
+        showOperator(value)
+    }
+})
+
+window.addEventListener('keydown', (e) => {
+    if (e.keyCode === keys.ENTER) {
+        calculate()
+    } else if (e.keyCode === keys.BACK) {
+        clearLast()
+    } else if (e.keyCode === keys.DEL) {
+        clearAll()
+    }
+})
 
 function updateDisplay (val) {
     display.textContent = val.toString().slice(0, maxLength)
@@ -25,7 +59,7 @@ function showOperator (op) {
     operator = op
     previousVal = currentVal
     currentVal = ''
-    updateDisplay(operator)
+    updateDisplay(operators[operator])
 }
 
 function calculate () {
@@ -40,10 +74,10 @@ function calculate () {
         case '-':
             result = prev - current
             break
-        case '×':
+        case '*':
             result = prev * current
             break
-        case '÷':
+        case '/':
             result = prev / current
             break
     }

@@ -25,6 +25,8 @@
     text-align: right;
     background-color: white;
     outline: none;
+    color: transparent;
+    text-shadow: 0 0 0 black;
 }
 
 .btn {
