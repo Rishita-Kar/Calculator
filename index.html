@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculator</title>
+    <link href="styles.css" rel="stylesheet">
+    <script src="script.js" defer></script></script>
+</head>
+<body>
+
+    <div class="calculatorDisplay">
+        <div>
+            <input id="input" onkeydown="return false"
+            minlength="0" maxlength="2000" size="10">
+        </div>
+        
+        <div>
+            <button onclick= "allClear()" class="longTopRowAC">AC</button>
+            <button onclick= "clear()" class="topRow">C</button>
+            <button onclick= "getOperator('/')" class="operation">÷</button>
+        </div>
+        
+        <div>
+            <button onclick="showValue(7)" class="digit">7</button>
+            <button onclick="showValue(8)" class="digit">8</button>
+            <button onclick="showValue(9)" class="digit">9</button>
+            <button onclick= "getOperator('*')" class="operation">×</button>
+        </div>
+        
+        <div>
+            <button onclick="showValue(4)" class="digit">4</button>
+            <button onclick="showValue(5)" class="digit">5</button>
+            <button onclick="showValue(6)" class="digit">6</button>
+            <button onclick= "getOperator('-')" class="operation">-</button>
+        </div>
+        
+        <div>
+            <button onclick="showValue(1)"  class="digit">1</button>
+            <button onclick="showValue(2)"  class="digit">2</button>
+            <button onclick="showValue(3)"  class="digit">3</button>
+            <button onclick= "getOperator('+')" class="operation">+</button>
+        </div>
+        
+        <div>
+            <button onclick="showValue(0)"  class="longDigitZero">0</button>
+            <button onclick= "showValue('.')" class="digit">.</button>
+            <button onclick= "getOperator('=')" class="operation">=</button>
+        </div>
+
+    </div>
+
+</body>
+</html>
