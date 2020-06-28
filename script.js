@@ -1,14 +1,21 @@
 const display = document.getElementById('display')
 
+const maxLength = 10
+
 let previousVal = ''
 let currentVal = ''
 let operator
 
+function updateDisplay (val) {
+    display.textContent = val.toString().slice(0, maxLength)
+}
+
 function showDigit (digit) {
     if (digit === '.' && currentVal.includes('.')) return
+    if (currentVal.length === maxLength) return
 
     currentVal = currentVal + digit.toString()
-    display.textContent = currentVal
+    updateDisplay(currentVal)
 }
 
 function showOperator (op) {
@@ -18,7 +25,7 @@ function showOperator (op) {
     operator = op
     previousVal = currentVal
     currentVal = ''
-    display.textContent = operator
+    updateDisplay(operator)
 }
 
 function calculate () {
@@ -44,17 +51,17 @@ function calculate () {
     currentVal = result
     previousVal = ''
     operator = null
-    display.textContent = result
+    updateDisplay(result)
 }
 
 function clearLast () {
     currentVal = currentVal.slice(0, -1)
-    display.textContent = currentVal
+    updateDisplay(currentVal)
 }
 
 function clearAll () {
     previousVal = ''
     currentVal = ''
     operator = null 
-    display.textContent = ''
+    updateDisplay('')
 }
