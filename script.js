@@ -1,53 +1,30 @@
+const display = document.getElementById('display')
+
 let previousVal = ''
 let currentVal = ''
 let operator
-let result
-
-const display = document.getElementById('display')
-
-function clearAll () {
-    display.textContent = ' '
-    previousVal = ''
-    currentVal = ''
-    operator = undefined 
-}
-
-function appendDigits (digit) {
-    if (digit === '.' && currentVal.includes('.')) return
-    currentVal = currentVal.toString() + digit.toString()
-}
 
 function showDigit (digit) {
-    appendDigits(digit)
-    display.textContent = currentVal.toString()  
+    if (digit === '.' && currentVal.includes('.')) return
 
-    if (showOperator) {
-        previousVal = currentVal
-        appendDigits(digit)
-        display.textContent = currentVal.toString()
-    }
+    currentVal = currentVal + digit.toString()
+    display.textContent = currentVal
 }
 
 function showOperator (op) {
     if (currentVal === '') return
-    if (previousVal !== '') {
-        calculate()
-    }
+    if (previousVal !== '') calculate()
 
     operator = op
     previousVal = currentVal
     currentVal = ''
-}
-
-function clear () {
-    currentVal = currentVal.toString().slice(0,-1)
+    display.textContent = operator
 }
 
 function calculate () {
     const prev = parseFloat(previousVal)
     const current = parseFloat(currentVal)
-
-    if (isNaN(prev) || isNaN(current)) return
+    let result
 
     switch (operator) {
         case '+':
@@ -62,12 +39,22 @@ function calculate () {
         case '÷':
             result = prev / current
             break
-        default:
-            return
     }
 
     currentVal = result
     previousVal = ''
-    operator = undefined
+    operator = null
     display.textContent = result
+}
+
+function clearLast () {
+    currentVal = currentVal.slice(0, -1)
+    display.textContent = currentVal
+}
+
+function clearAll () {
+    previousVal = ''
+    currentVal = ''
+    operator = null 
+    display.textContent = ''
 }
