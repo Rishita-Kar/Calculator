@@ -4,51 +4,50 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Calculator</title>
-    <link href="styles.css" rel="stylesheet">
-    <script src="script.js" defer></script></script>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Mono&display=swap">
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
 
-    <div class="calculatorDisplay">
-        <div>
-            <input id="input" onkeydown="return false"
-            minlength="0" maxlength="2000" size="10">
+    <div id="calculator-wrapper">
+        <div id="calculator">
+            <div id="display" contenteditable></div>
+            
+            <div>
+                <button onclick="clearAll()" class="btn btn-clear btn-long">AC</button>
+                <button onclick="clear()" class="btn btn-clear">C</button>
+                <button onclick="showOperator('/')" class="btn btn-operator">÷</button>
+            </div>
+            
+            <div>
+                <button onclick="showDigit(7)" class="btn btn-digit">7</button>
+                <button onclick="showDigit(8)" class="btn btn-digit">8</button>
+                <button onclick="showDigit(9)" class="btn btn-digit">9</button>
+                <button onclick="showOperator('*')" class="btn btn-operator">×</button>
+            </div>
+            
+            <div>
+                <button onclick="showDigit(4)" class="btn btn-digit">4</button>
+                <button onclick="showDigit(5)" class="btn btn-digit">5</button>
+                <button onclick="showDigit(6)" class="btn btn-digit">6</button>
+                <button onclick="showOperator('-')" class="btn btn-operator">-</button>
+            </div>
+            
+            <div>
+                <button onclick="showDigit(1)" class="btn btn-digit">1</button>
+                <button onclick="showDigit(2)" class="btn btn-digit">2</button>
+                <button onclick="showDigit(3)" class="btn btn-digit">3</button>
+                <button onclick="showOperator('+')" class="btn btn-operator">+</button>
+            </div>
+            
+            <div>
+                <button onclick="showDigit(0)" class="btn btn-digit btn-long">0</button>
+                <button onclick="showDigit('.')" class="btn btn-digit">.</button>
+                <button onclick="showOperator('=')" class="btn btn-operator">=</button>
+            </div>
         </div>
-        
-        <div>
-            <button onclick= "allClear()" class="longTopRowAC">AC</button>
-            <button onclick= "clear()" class="topRow">C</button>
-            <button onclick= "getOperator('/')" class="operation">÷</button>
-        </div>
-        
-        <div>
-            <button onclick="showValue(7)" class="digit">7</button>
-            <button onclick="showValue(8)" class="digit">8</button>
-            <button onclick="showValue(9)" class="digit">9</button>
-            <button onclick= "getOperator('*')" class="operation">×</button>
-        </div>
-        
-        <div>
-            <button onclick="showValue(4)" class="digit">4</button>
-            <button onclick="showValue(5)" class="digit">5</button>
-            <button onclick="showValue(6)" class="digit">6</button>
-            <button onclick= "getOperator('-')" class="operation">-</button>
-        </div>
-        
-        <div>
-            <button onclick="showValue(1)"  class="digit">1</button>
-            <button onclick="showValue(2)"  class="digit">2</button>
-            <button onclick="showValue(3)"  class="digit">3</button>
-            <button onclick= "getOperator('+')" class="operation">+</button>
-        </div>
-        
-        <div>
-            <button onclick="showValue(0)"  class="longDigitZero">0</button>
-            <button onclick= "showValue('.')" class="digit">.</button>
-            <button onclick= "getOperator('=')" class="operation">=</button>
-        </div>
-
     </div>
 
+    <script src="script.js"></script>
 </body>
 </html>

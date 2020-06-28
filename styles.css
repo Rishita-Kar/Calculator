@@ -1,102 +1,71 @@
-body {
-    border: 1px solid #ffffff;
+* {
+    box-sizing: border-box;
+}
+
+#calculator-wrapper {
+    display: flex;
+    justify-content: center;
+    margin-top: 100px;
+}
+
+#calculator {
+    display: inline-block;
+    background-color: #1c1c1c;
+    padding: 20px;
+    border-radius: 20px;
+}
+
+#display {
+    border-radius: 10px;
+    margin: 5px;
+    margin-bottom: 20px;
     padding: 10px;
-    margin: 10px;
-    background: #1c1c1c;
+    font-size: 32px;
+    font-family: 'DM Mono', monospace;
+    text-align: right;
+    background-color: white;
+    outline: none;
 }
 
-.longTopRowAC {
-    border: 0.25px solid #d4d4d2;
+.btn {
+    width: 50px;
+    height: 50px;
+    border-radius: 25px;
     margin: 5px;
+    font-size: 24px;
+    transition: 0.3s;
+    border: none;
+    outline: none;
+}
+
+.btn-long {
     width: 115px;
-    line-height: 2;
-    font-size: x-large;
-    text-align: center;
-    color: #000000;    
-    border-radius: 50px;
-    background:#d4d4d2;
 }
 
-.longDigitZero
-{
-    border: 0.25px solid #505050;
-    margin: 5px;
-    width: 115px;
-    line-height: 2;
-    font-size: x-large;
-    text-align: center;
-    color: #ffffff;
-    border-radius: 50px;
-    background: #505050;
+.btn-digit {
+    background-color: #505050;
+    color: white;
 }
 
-.digit {
-    margin: 5px;
-    width:50px;
-    height:50px;
-    border: 0.25px solid #505050;
-    border-radius: 50%;
-    color:#ffffff;
-    text-align:center;
-    background: #505050;
-    font-size:x-large;
+.btn-digit:hover {
+    background-color: #d3d3d3;
+    color: #505050;
 }
 
-.operation {
-    margin: 5px;
-    width:50px;
-    height:50px;
-    border: 0.25px solid #FF9500;
-    border-radius: 50%;
-    color:#ffffff;
-    text-align:center;
-    background: #FF9500;
-    font-size:x-large;
+.btn-operator {
+    background-color: #ff9500;
+    color: white;
 }
 
-.topRow {
-    margin: 5px;
-    width:50px;
-    height:50px;
-    border: 0.25px solid #d4d4d2;
-    border-radius: 50%;
-    color:#000000;
-    text-align:center;
-    background: #d4d4d2;
-    font-size:x-large;
-}
-
-input
-{
-  padding:10px;
-  border: 1px solid #ffffff;
-  background: #1c1c1c;
-  color: #ffffff;
-  font-size:xx-large;
-  text-align: right;
-  width: 250px;
-  height: 50px;
-}
-
-.digit:hover {
-  background:#d3d3d3;  
-}
-
-.operation:hover {
-    background:#ffffff;
+.btn-operator:hover {
+    background-color: white;
     color: #ff9500;
 }
 
-.topRow:hover {
-    background:#ffffff;
-    color: #000000;
+.btn-clear {
+    background-color: #d4d4d2;
 }
 
-.longTopRowAC:hover {
-    background:#ffffff;
-    color: #000000;
-}
-
-.longDigitZero:hover {
-    background:#d3d3d3;
+.btn-clear:hover {
+    background-color: white;
 }

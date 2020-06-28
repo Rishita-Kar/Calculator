@@ -1,61 +1,55 @@
-let previousVal =''
-let currentVal=''
+let previousVal = ''
+let currentVal = ''
 let operator
 let result
 
-function allClear() //Done
-{
-    document.getElementById("input").value = " "
-    previousVal= ''
-    currentVal= ''
-    operator= undefined 
+const display = document.getElementById('display')
+
+function clearAll () {
+    display.textContent = ' '
+    previousVal = ''
+    currentVal = ''
+    operator = undefined 
 }
 
-function appendDigits(digit) //Done
-{
-    if (digit === '.' && currentVal.includes('.')) 
-    return
+function appendDigits (digit) {
+    if (digit === '.' && currentVal.includes('.')) return
     currentVal = currentVal.toString() + digit.toString()
 }
 
-let showValue = function(val)
-{
-    appendDigits(val)
-    document.getElementById("input").value = currentVal.toString()  
-    if (getOperator)
-    {
-        previousVal=currentVal
-        appendDigits(val)
-        document.getElementById("input").value = currentVal.toString()
+function showDigit (digit) {
+    appendDigits(digit)
+    display.textContent = currentVal.toString()  
+
+    if (showOperator) {
+        previousVal = currentVal
+        appendDigits(digit)
+        display.textContent = currentVal.toString()
     }
 }
 
-let getOperator = function(op)
-{
-    if (currentVal==='')
-    return
-    if (previousVal!== '')
-    {
+function showOperator (op) {
+    if (currentVal === '') return
+    if (previousVal !== '') {
         calculate()
     }
+
     operator = op
     previousVal = currentVal
     currentVal = ''
 }
 
-function clear()
-{
+function clear () {
     currentVal = currentVal.toString().slice(0,-1)
 }
 
-function calculate()
-{
+function calculate () {
     const prev = parseFloat(previousVal)
     const current = parseFloat(currentVal)
-    if (isNaN(prev) || isNaN(current))
-    return
 
-    switch (operator){
+    if (isNaN(prev) || isNaN(current)) return
+
+    switch (operator) {
         case '+':
             result = prev + current
             break
@@ -71,8 +65,9 @@ function calculate()
         default:
             return
     }
+
     currentVal = result
     previousVal = ''
     operator = undefined
-    document.getElementById("input").value = result
+    display.textContent = result
 }
